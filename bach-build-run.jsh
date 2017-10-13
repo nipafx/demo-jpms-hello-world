@@ -37,15 +37,14 @@ Path archive = Paths.get("target/bach/jpms-hello-world.jar")
  *
  * Compile using "--module-source-path" and "--module" combo fails:
  * <pre>
- *   javac("-d", "target/bach/classes", "--module-source-path", "src/main/java", "--module", name)
+ *   javac("-d", classes, "--module-source-path", sources, "--module", name)
  *   error: module org.codefx.demo.jpms_hello_world not found in module source path
  * </pre>
- * So, we have to simulate "$(find src -name '*.java')" and use "Bach.Command" directly.
+ * So, we have to simulate "$(find src -name '*.java')" using a self-expanding visitor.
  */
-Bach.Command javac = new Bach.Command("javac")
-javac.add("-d").add(classes)
-javac.addAll(sources, Bach.Basics::isJavaFile)
-javac.run()
+Predicate<Path> isJavaFile = path -> path.getFileName().toString().endsWith(".java")
+Bach.Command.Visitor files = command -> command.addAll(sources, isJavaFile)
+javac("-d", classes, files)
 
 /*
  * Package.
