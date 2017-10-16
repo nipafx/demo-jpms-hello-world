@@ -42,9 +42,7 @@ Path archive = Paths.get("target/bach/jpms-hello-world.jar")
  * </pre>
  * So, we have to simulate "$(find src -name '*.java')" using a self-expanding visitor.
  */
-Predicate<Path> isJavaFile = path -> path.getFileName().toString().endsWith(".java")
-Bach.Command.Visitor files = command -> command.addAll(sources, isJavaFile)
-javac("-d", classes, files)
+javac("-d", classes, Bach.Command.visit(command -> command.addAllJavaFiles(sources)))
 
 /*
  * Package.
