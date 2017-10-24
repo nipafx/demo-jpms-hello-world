@@ -22,6 +22,7 @@ To compile, package and launch without Maven on Linux:
 javac
 	-d target/classes
 	$(find src -name '*.java')
+
 jar --create
 	--file target/jpms-hello-world.jar
 	--main-class org.codefx.demo.jpms.HelloModularWorld
