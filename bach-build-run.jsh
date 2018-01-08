@@ -4,7 +4,7 @@
  * Download "Bach.java" and "Bach.jsh" from github to local "target" directory.
  */
 Path target = Files.createDirectories(Paths.get("target"))
-URL context = new URL("https://raw.githubusercontent.com/sormuras/bach/master/src/bach/")
+URL context = new URL("https://raw.githubusercontent.com/sormuras/bach/1.0.0/src/bach/")
 for (Path script : Set.of(target.resolve("Bach.java"), target.resolve("Bach.jsh"))) {
     if (Files.exists(script)) continue; // comment to force download files
     try (InputStream stream = new URL(context, script.getFileName().toString()).openStream()) {
