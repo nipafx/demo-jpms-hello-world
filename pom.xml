@@ -14,6 +14,15 @@
 		<maven.compiler.target>9</maven.compiler.target>
 	</properties>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.2.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -22,7 +31,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.8.0</version>
 				<configuration>
 					<fork>true</fork>
 				</configuration>
@@ -31,6 +40,18 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.0.2</version>
+			</plugin>
+			<plugin>
+				<groupId>de.sormuras</groupId>
+				<artifactId>junit-platform-maven-plugin</artifactId>
+				<version>0.0.7</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>launch-junit-platform</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
