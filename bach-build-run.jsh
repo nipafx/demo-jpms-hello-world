@@ -26,11 +26,11 @@ System.setProperty("bach.verbose", "true")
 /*
  * Define global properties.
  */
-String name = "org.codefx.demo.jpms_hello_world"
-String main = "org.codefx.demo.jpms.HelloModularWorld"
+String name = "dev.nipafx.demo.hello_modules"
+String main = "dev.nipafx.demo.modules.HelloModularWorld"
 Path classes = Paths.get("target/bach/classes")
 Path sources = Paths.get("src/main/java")
-Path archive = Paths.get("target/bach/jpms-hello-world.jar")
+Path archive = Paths.get("target/bach/hello-modules.jar")
 
 /*
  * Compile.
@@ -38,7 +38,7 @@ Path archive = Paths.get("target/bach/jpms-hello-world.jar")
  * Compile using "--module-source-path" and "--module" combo fails:
  * <pre>
  *   javac("-d", classes, "--module-source-path", sources, "--module", name)
- *   error: module org.codefx.demo.jpms_hello_world not found in module source path
+ *   error: module dev.nipafx.demo.hello_modules not found in module source path
  * </pre>
  * So, we have to simulate "$(find src -name '*.java')" using a self-expanding visitor.
  */

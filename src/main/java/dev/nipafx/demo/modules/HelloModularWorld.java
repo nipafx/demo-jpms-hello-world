@@ -1,4 +1,4 @@
-package org.codefx.demo.jpms;
+package dev.nipafx.demo.modules;
 
 public class HelloModularWorld {
 
